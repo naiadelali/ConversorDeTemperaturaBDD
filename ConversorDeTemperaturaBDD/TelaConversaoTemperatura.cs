@@ -36,17 +36,18 @@ namespace ConversorDeTemperaturaBDD
         public void ProcessarConversao()
         {
             IWebElement botaoConverter = _driver.FindElement(By.Id("btnConverter"));
-            botaoConverter.Submit();
+            botaoConverter.Click();
 
             WebDriverWait wait = new WebDriverWait(
-                _driver, TimeSpan.FromSeconds(10));
+                _driver, TimeSpan.FromSeconds(60));
             wait.Until((drv) => _driver.FindElement(By.Id("resultado")) != null);
         }
 
-        public double ObterTemperaturaKelvin()
+        public decimal ObterTemperaturaKelvin()
         {
             IWebElement resultado = _driver.FindElement(By.Id("resultado"));
-            return Convert.ToDouble(resultado.Text);
+            string temp = resultado.Text;
+            return Convert.ToDecimal(temp.Replace(".", ","));
         }
 
         public void Fechar()

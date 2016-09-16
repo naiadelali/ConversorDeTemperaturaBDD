@@ -26,13 +26,13 @@ namespace ConversorDeTemperaturaBDD
         }
 
         [Then(@"o resultado será (.*) Kelvin")]
-        public void EntaoOResultadoSeraKelvin(Decimal temperaturaKelvin)
+        public void EntaoOResultadoSeraKelvin(decimal temperaturaKelvin)
         {
             Assert.AreEqual(temperaturaKelvin, _temperaturaKelvin);
         }
 
         private double _temperaturaCelsius;
-        private double _temperaturaKelvin;
+        private decimal _temperaturaKelvin;
 
 
     }
